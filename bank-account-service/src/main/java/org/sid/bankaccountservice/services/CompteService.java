@@ -9,4 +9,5 @@ public interface CompteService  {
      CompteBancaireReponseDTO addCompte(CompteBancaireRequeteDTO compteBancaireRequeteDTO);
 
 
+     CompteBancaireReponseDTO updateCompte(String id, CompteBancaireRequeteDTO compteBancaireDTO);
 }

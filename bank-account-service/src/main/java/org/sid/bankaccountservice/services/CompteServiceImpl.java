@@ -32,10 +32,23 @@ public class CompteServiceImpl implements CompteService {
         CompteBancaireReponseDTO compteBancaireReponseDTO = compteMapper.fromComptebancaire(saveCompteBancaire);
         return compteBancaireReponseDTO ;
     }
+    @Override
+    public CompteBancaireReponseDTO updateCompte(String id ,CompteBancaireRequeteDTO compteBancaireDTO) {
+        CompteBancaire compteBancaire=CompteBancaire.builder()
+                .id(id)
+                .dateCreation(new Date())
+                .solde(compteBancaireDTO.getSolde())
+                .type(compteBancaireDTO.getType())
+                .devise(compteBancaireDTO.getDevise())
+                .build();
+        CompteBancaire saveCompteBancaire  =compteBancaireRepository.save(compteBancaire);
+        CompteBancaireReponseDTO compteBancaireReponseDTO = compteMapper.fromComptebancaire(saveCompteBancaire);
+        return compteBancaireReponseDTO ;
+    }
 }
 
 //CompteBancaireReponseDTO compteBancaireReponseDTO = CompteBancaireReponseDTO.builder()
-//                .type(saveCompteBancaire.getType())
-//                .solde(saveCompteBancaire.getSolde())
-//                .devise(saveCompteBancaire.getDevise())
-//                .build();
+//         .type(saveCompteBancaire.getType())
+//      .solde(saveCompteBancaire.getSolde())
+//       .devise(saveCompteBancaire.getDevise())
+//           .build();
